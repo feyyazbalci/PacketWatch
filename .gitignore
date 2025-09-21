@@ -1,0 +1,111 @@
+# PacketWatch .gitignore
+
+# Binaries for programs and plugins
+*.exe
+*.exe~~
+*.dll
+*.so
+*.dylib
+bin/
+dist/
+
+# Test binary, build with `go test -c`
+*.test
+# Output of the go coverage tool
+*.Output
+coverage.html
+coverage.xml
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories
+vendor/
+
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.example
+.env.development.local
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary folders
+tmp/
+temp/
+
+# Docker
+.dockerignore
+
+# Application specific
+data/
+uploads/
+captures/
+*.pcap
+*.pcapng
+
+# Build artifacts
+*.tar.gz
+*.zip
+
+# Node.js (for frontend)
+node_modules/
+.npm
+.eslintcache
+
+# Frontend build
+web/dist/
+web/build/
+
+# Certificate files
+*.pem
+*.key
+*.crt
+*.cert
+
+# Backup files
+*.backup
+*.bak
+
+# Local configuration overrides
+configs/local/development.yaml
+configs/local/production.yaml
+
+# Grafana data
+grafana/
+
+# Prometheus data
+prometheus/
+
+# Development databases
+postgres_data/
+redis_data/
