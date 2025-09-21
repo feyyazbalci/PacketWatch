@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: packetwatch_postgres
+    environment:
+      POSTGRES_DB: packetwatch
+      POSTGRES_USER: packetwatch
+      POSTGRES_PASSWORD: packetwatch123
+    ports:
+      - "5438:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U packetwatch -d packetwatch"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  app:
+    build: .
+    container_name: packetwatch_app
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5438
+      DB_NAME: packetwatch
+      DB_USER: packetwatch
+      DB_PASSWORD: packetwatch123
+
+      PORT: 8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
+    

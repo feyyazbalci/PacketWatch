@@ -158,7 +158,7 @@ func (h *PacketHandler) GetStats(c *fiber.Ctx) error {
 		stats.ProtocolCounts[result.Protocol] = result.Count
  	}
 
-	 var ipResults []struct {
+	var ipResults []struct {
 		IP    string `json:"ip"`
 		Count int64  `json:"count"`
 	}
