@@ -23,9 +23,9 @@ func Connect() (*gorm.DB, error) {
 		host, port, user, password, dbname, sslmode)
 
 	// GORM config
-	config := &gorm.Config(
-		Logger: logger.Default.LogModel(logger.Info), // Collect Sql logs
-	)
+	config := &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info), // Collect SQL logs
+	}
 
 	// Connect to the database
 	db, err := gorm.Open(postgres.Open(dsn), config)
@@ -40,9 +40,9 @@ func Connect() (*gorm.DB, error) {
 	}
 
 	// Connection pool config
-	sqlDB.SetMaxOpenConns(25)                   
-	sqlDB.SetMaxIdleConns(5)                    // Max idle connection
-	sqlDB.SetConnMaxLifetime(5 * time.Minute)   // Connection max lifetime
+	sqlDB.SetMaxOpenConns(25)
+	sqlDB.SetMaxIdleConns(5)                  // Max idle connection
+	sqlDB.SetConnMaxLifetime(5 * time.Minute) // Connection max lifetime
 
 	// Database bağlantısını test et
 	if err := sqlDB.Ping(); err != nil {

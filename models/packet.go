@@ -35,6 +35,7 @@ type PacketStats struct {
 	TopIPS         []IPCount        `json:"top_ips"`
 	TopPorts       []PortCount      `json:"top_ports"`
 	LastHour       int64            `json:"last_hour"`
+	ProtocolCounts map[string]int64 `json:"protocol_counts"`
 }
 
 type IPCount struct {
